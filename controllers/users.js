@@ -30,10 +30,12 @@ const getSingle = async (req, res) => {
 const createUser = async (req, res) => {
     //#swagger.tags=['Users']
     const user = {
+        
         email: req.body.email,
         username: req.body.username,
         name: req.body.name,
-        ipaddress: req.body.ipaddress
+        birthday: req.body.birthday,
+        section: req.body.section
     };
 
     const response = await mongodb.getDatabase().db().collection('users').insertOne(user);
@@ -56,7 +58,8 @@ const updateUser = async (req, res) => {
         email: req.body.email,
         username: req.body.username,
         name: req.body.name,
-        ipaddress: req.body.ipaddress
+        birthday: req.body.birthday,  
+        section: req.body.section
     };
 
     const response = await mongodb.getDatabase().db().collection('users').replaceOne({ _id: userId }, user);
